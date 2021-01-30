@@ -15,20 +15,28 @@ export function TeamStandings(props) {
         <div>Standings
             <div>
                 <table>
-                    <th>Name</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Map Wins</th>
-                    <th>Map Losses</th>
-                    {teamList.map((team, index) => (
+                    <thead>
                         <tr>
-                            <td>{team.teamName}</td>
-                            <td>{team.wins}</td>
-                            <td>{team.losses}</td>
-                            <td>{team.mapWins}</td>
-                            <td>{team.mapLosses}</td>
+                            <th>Name</th>
+                            <th>Wins</th>
+                            <th>Losses</th>
+                            <th>Map Wins</th>
+                            <th>Map Losses</th>
                         </tr>
-                    ))}
+                    </thead>
+                    <tbody>
+                        {teamList.map((team) => (
+                            <tr key={team.seasonTeamID}>
+                                <td>
+                                    <window.ReactRouterDOM.Link to={`/teams/${team.seasonTeamID}`}>{team.teamName}</window.ReactRouterDOM.Link>
+                                </td>
+                                <td>{team.wins}</td>
+                                <td>{team.losses}</td>
+                                <td>{team.mapWins}</td>
+                                <td>{team.mapLosses}</td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
             </div>
         </div>

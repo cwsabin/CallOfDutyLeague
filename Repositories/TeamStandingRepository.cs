@@ -20,6 +20,7 @@ namespace CallOfDutyLeague.Repositories
             {
                 var parameters = new { year = year };
                 return con.Query<TeamStanding>($@"SELECT
+						seasonTeam.SeasonTeamID,
 						team.TeamName,
 						(
 							SELECT COUNT(series.SeriesID)
@@ -44,7 +45,8 @@ namespace CallOfDutyLeague.Repositories
 					FROM tblSeasonTeam seasonTeam (NOLOCK)
 					JOIN tblSeason season (NOLOCK) ON seasonTeam.SeasonID = season.SeasonID
 					JOIN tblTeam team (NOLOCK) ON seasonTeam.TeamID = team.TeamID
-					WHERE season.Year = @year", parameters).ToList();
+					WHERE season.Year = @year
+					ORDER BY Wins desc, Losses Asc, MapWins desc, MapLosses asc, team.TeamName", parameters).ToList();
             }
         }
     }

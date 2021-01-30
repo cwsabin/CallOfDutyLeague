@@ -1,7 +1,7 @@
 ﻿import { getCurrentSeason } from "./api.js";
 import { TeamStandings } from "./TeamStandings.jsx";
 
-function LandingPage(props) {
+export function LandingPage(props) {
     const [currentSeason, setCurrentSeason] = React.useState({ currentSeason: null });
 
     React.useEffect(() => {
@@ -18,8 +18,3 @@ function LandingPage(props) {
         </div>
     );
 }
-
-ReactDOM.render(
-    <LandingPage />,
-    document.getElementById('content')
-);
