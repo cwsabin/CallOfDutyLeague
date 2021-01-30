@@ -13,9 +13,24 @@ export function TeamStandings(props) {
 
     return (
         <div>Standings
-            <div>{teamList.map((team, index) => (
-                <p key={index}>{team.MapWins}</p>
-            ))}</div>
+            <div>
+                <table>
+                    <th>Name</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Map Wins</th>
+                    <th>Map Losses</th>
+                    {teamList.map((team, index) => (
+                        <tr>
+                            <td>{team.teamName}</td>
+                            <td>{team.wins}</td>
+                            <td>{team.losses}</td>
+                            <td>{team.mapWins}</td>
+                            <td>{team.mapLosses}</td>
+                        </tr>
+                    ))}
+                </table>
+            </div>
         </div>
     );
 }
