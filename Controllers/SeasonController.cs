@@ -1,5 +1,7 @@
 ﻿using CallOfDutyLeague.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace CallOfDutyLeague.Controllers
 {
@@ -22,6 +24,13 @@ namespace CallOfDutyLeague.Controllers
         public IActionResult Seasons()
         {
             return Json(seasonRepository.GetAllSeasons());
+        }
+
+        [Route("getCurrentSeason")]
+        public async Task<IActionResult> GetCurrentSeason()
+        {
+            var currentSeason = await seasonRepository.GetCurrentSeasonAsync(DateTime.Today);
+            return Json(currentSeason);
         }
     }
 }

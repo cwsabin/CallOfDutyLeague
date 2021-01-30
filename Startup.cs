@@ -86,6 +86,7 @@ namespace CallOfDutyLeague
         {
             services.AddSingleton<ISeasonRepository, SeasonRepository>();
             services.AddSingleton<ITeamRepository, TeamRepository>();
+            services.AddSingleton<ITeamStandingRepository, TeamStandingRepository>();
         }
     }
 }
