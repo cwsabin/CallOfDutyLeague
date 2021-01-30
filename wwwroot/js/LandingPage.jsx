@@ -1,10 +1,19 @@
-﻿import { TeamStandings } from "./TeamStandings";
+﻿function LandingPage(props) {
+    const [currentSeason, setCurrentSeason] = React.useState({ currentSeason: null });
 
-function LandingPage(props) {
+    React.useEffect(() => {
+        const getCurrentSeason = async () => {
+            const result = await fetch(`https://localhost:44372/getCurrentSeason`);
+            const season = await result.json();
+            setCurrentSeason(season);
+        }
+
+        getCurrentSeason();
+    });
+
     return (
         <div>
-            Test
-            <TeamStandings />
+            {currentSeason.seasonID}{currentSeason.year}
         </div>
     );
 }
