@@ -21,28 +21,32 @@ export function Team() {
     console.log(team.teamName);
 
     return (
-        <div>
-            <h1>{team.teamName}</h1>
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {roster.map((player) => (
-                            <tr key={player.playerID}>
-                                <td>{player.gamerName}</td>
-                                <td>{player.firstName}</td>
-                                <td>{player.lastName}</td>
+        <ReactBootstrap.Container fluid>
+            <ReactBootstrap.Row>
+                <h1>{team.teamName}</h1>
+            </ReactBootstrap.Row>
+            <ReactBootstrap.Row>
+                <ReactBootstrap.Col key="teamRoster" md='auto'>
+                    <ReactBootstrap.Table striped bordered hover variant="dark" key={team.teamName}>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                        </thead>
+                        <tbody>
+                            {roster.map((player) => (
+                                <tr key={player.playerID}>
+                                    <td>{player.gamerName}</td>
+                                    <td>{player.firstName}</td>
+                                    <td>{player.lastName}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </ReactBootstrap.Table>
+                </ReactBootstrap.Col>
+            </ReactBootstrap.Row>
+        </ReactBootstrap.Container>
     );
 }

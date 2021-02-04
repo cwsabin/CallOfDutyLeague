@@ -8,10 +8,7 @@
                 <ReactBootstrap.Nav.Link as={window.ReactRouterDOM.Link} to="/events">Schedule</ReactBootstrap.Nav.Link>
             </ReactBootstrap.Nav.Item>
             <ReactBootstrap.Nav.Item>
-                <ReactBootstrap.Nav.Link eventKey="link-2">Link</ReactBootstrap.Nav.Link>
-            </ReactBootstrap.Nav.Item>
-            <ReactBootstrap.Nav.Item>
-                <ReactBootstrap.Nav.Link eventKey="disabled" disabled>Disabled</ReactBootstrap.Nav.Link>
+                <ReactBootstrap.Nav.Link disabled>Stats</ReactBootstrap.Nav.Link>
             </ReactBootstrap.Nav.Item>
         </ReactBootstrap.Nav>
     );
