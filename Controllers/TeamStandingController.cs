@@ -1,5 +1,6 @@
 ﻿using CallOfDutyLeague.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CallOfDutyLeague.Controllers
 {
@@ -16,6 +17,12 @@ namespace CallOfDutyLeague.Controllers
         public IActionResult GetCurrentStandings(short year)
         {
             return Json(teamStandingRepository.GetCurrentStandings(year));
+        }
+
+        [Route("getGroupStandings")]
+        public async Task<IActionResult> GetGroupStandings()
+        {
+            return Json(await teamStandingRepository.GetGroupStandingsAsync());
         }
     }
 }

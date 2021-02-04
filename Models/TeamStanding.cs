@@ -13,5 +13,6 @@ namespace CallOfDutyLeague.Models
         public byte Losses { get; set; }
         public byte MapWins { get; set; }
         public byte MapLosses { get; set; }
+        public long StageGroupID { get; set; }
     }
 }

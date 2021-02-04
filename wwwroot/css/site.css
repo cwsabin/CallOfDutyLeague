@@ -24,6 +24,13 @@ a {
   border-color: #1861ac;
 }
 
+/*My shitty css*/
+.thumbnail {
+    height: 100px;
+    width: 100px;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

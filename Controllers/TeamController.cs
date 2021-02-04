@@ -1,5 +1,6 @@
 ﻿using CallOfDutyLeague.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CallOfDutyLeague.Controllers
 {
@@ -17,11 +18,10 @@ namespace CallOfDutyLeague.Controllers
             return View();
         }
 
-        [Route("teams/{id}")]
-        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Seasons(int id)
+        [Route("teams/{seasonTeamID}")]
+        public async Task<IActionResult> Teams(int seasonTeamID)
         {
-            return Json(teamRepository.GetTeamsBySeason(id));
+            return Json(await teamRepository.GetTeamBySeasonTeamIDAsync(seasonTeamID));
         }
     }
 }
