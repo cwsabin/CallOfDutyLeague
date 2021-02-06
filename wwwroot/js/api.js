@@ -35,3 +35,8 @@ export const getEvents = async () => {
     return await result.json();
 }
 
+export const getSeriesDetails = async (seriesID) => {
+    const result = await fetch(`${basePath}getSeriesDetails/${seriesID}`);
+    return await result.json();
+}
+
