@@ -18,8 +18,6 @@ export function Team() {
         getTeamInfo()
     }, []);
 
-    console.log(team.teamName);
-
     return (
         <ReactBootstrap.Container fluid>
             <ReactBootstrap.Row>

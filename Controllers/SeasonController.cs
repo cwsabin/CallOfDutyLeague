@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace CallOfDutyLeague.Controllers
 {
+    [Route("Season")]
     public class SeasonController : Controller
     {
         private ISeasonRepository seasonRepository;

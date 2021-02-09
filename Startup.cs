@@ -10,6 +10,7 @@ using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using CallOfDutyLeague.Repositories;
 using System;
+using Microsoft.AspNetCore.Cors;
 
 namespace CallOfDutyLeague
 {
@@ -27,6 +28,13 @@ namespace CallOfDutyLeague
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
             services.AddReact();
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
             // Make sure a JS engine is registered, or you will get an error!
             services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
@@ -48,8 +56,10 @@ namespace CallOfDutyLeague
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
 
+            app.UseCors("MyPolicy");
+            app.UseHttpsRedirection();
+            
             app.UseReact(config =>
             {
                 // If you want to use server-side rendering of React components,
@@ -90,6 +100,8 @@ namespace CallOfDutyLeague
             services.AddSingleton<ITeamRosterRepository, TeamRosterRepository>();
             services.AddSingleton<ISeriesRepository, SeriesRepository>();
             services.AddSingleton<IEventRepository, EventRepository>();
+            services.AddSingleton<ISeriesDetailRepository, SeriesDetailRepository>();
+            services.AddSingleton<IPlayerMapRepository, PlayerMapRepository>();
         }
     }
 }

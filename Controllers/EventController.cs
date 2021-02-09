@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace CallOfDutyLeague.Controllers
 {
+    [Route("Event")]
     public class EventController : Controller
     {
         private IEventRepository eventRepository;

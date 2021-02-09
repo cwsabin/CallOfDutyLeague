@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace CallOfDutyLeague.Controllers
 {
+    [Route("Team")]
     public class TeamController : Controller
     {
         private ITeamRepository teamRepository;

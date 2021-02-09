@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CallOfDutyLeague.Controllers
 {
+    [Route("Home")]
     public class HomeController : Controller
     {
         public IActionResult Home()
