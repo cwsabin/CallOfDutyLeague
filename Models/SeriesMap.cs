@@ -15,5 +15,6 @@ namespace CallOfDutyLeague.Models
         public byte HomeTeamScore { get; set; }
         public byte AwayTeamScore { get; set; }
         public byte MapNumber { get; set; }
+        public List<PlayerMap> PlayerMaps { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace CallOfDutyLeague.Repositories
     public interface ISeriesRepository
     {
         public Task<List<Series>> GetSeriesScheduleByEventAsync(long eventID);
+        public Task<SeriesScore> GetSeriesScoreAsync(long seriesID);
     }
     public class SeriesRepository : ISeriesRepository
     {
@@ -41,6 +42,29 @@ namespace CallOfDutyLeague.Repositories
                     JOIN tblTeam awayTeam (NOLOCK) ON awaySeasonTeam.TeamID = awayTeam.TeamID
                     WHERE series.EventID = @eventID
                     ORDER BY series.SeriesDate", parameters)).ToList();
+            }
+        }
+
+        public async Task<SeriesScore> GetSeriesScoreAsync(long seriesID)
+        {
+            using (var con = new SqlConnection(Constants.ConnectionString))
+            {
+                var parameters = new { seriesID };
+                return await con.QueryFirstAsync<SeriesScore>($@"SELECT
+                    ( 
+	                    SELECT
+		                    COUNT(DISTINCT seriesMap.SeriesMapID)
+	                    FROM tblSeriesMap seriesMap (NOLOCK)
+	                    JOIN tblSeries series (NOLOCK) ON series.SeriesID = seriesMap.SeriesID
+	                    WHERE seriesMap.SeriesID = @seriesID AND series.HomeTeamID = seriesMap.WinningTeamID
+                    ) AS HomeScore,
+                    (
+	                    SELECT
+		                    COUNT(DISTINCT seriesMap.SeriesMapID)
+	                    FROM tblSeriesMap seriesMap (NOLOCK)
+	                    JOIN tblSeries series (NOLOCK) ON series.SeriesID = seriesMap.SeriesID
+	                    WHERE seriesMap.SeriesID = @seriesID AND series.AwayTeamID = seriesMap.WinningTeamID
+                    ) AS AwayScore", parameters);
             }
         }
     }

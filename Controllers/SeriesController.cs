@@ -18,5 +18,11 @@ namespace CallOfDutyLeague.Controllers
         {
             return Json(await seriesRepository.GetSeriesScheduleByEventAsync(eventID));
         }
+
+        [Route("getSeriesScore/{seriesID}")]
+        public async Task<IActionResult> GetSeriesScore(long seriesID)
+        {
+            return Json(await seriesRepository.GetSeriesScoreAsync(seriesID));
+        }
     }
 }

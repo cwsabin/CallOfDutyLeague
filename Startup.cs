@@ -101,6 +101,7 @@ namespace CallOfDutyLeague
             services.AddSingleton<ISeriesRepository, SeriesRepository>();
             services.AddSingleton<IEventRepository, EventRepository>();
             services.AddSingleton<ISeriesDetailRepository, SeriesDetailRepository>();
+            services.AddSingleton<IPlayerMapRepository, PlayerMapRepository>();
         }
     }
 }
